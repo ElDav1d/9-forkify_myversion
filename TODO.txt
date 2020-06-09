@@ -6,7 +6,7 @@ MINE
     - ingredient from recipe's list?
     - alert?
 5- Split controllers
-6- Clean markup's comments
+// 6- Clean markup's comments
 7- Pizza DIP problem with likes.
 8- FIX outer url'sç
 9- Improve ingredient paragraph (cookie monster cupcakes)
