@@ -1,5 +1,5 @@
 MINE
-1- Remove scroll at ingredients list
+// 1- Remove scroll at ingredients list
 2- Decouple items from list models (ingrededients. likes...)
 3- Likes grouped by Search?
 4- Ingredient Shopping list ammount when 0?

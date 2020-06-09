@@ -441,9 +441,7 @@ body {
   display: flex;
   flex-direction: column; }
   .shopping__list {
-    list-style: none;
-    max-height: 77rem;
-    overflow: scroll; }
+    list-style: none; }
   .shopping__item {
     display: flex;
     align-items: flex-start;
