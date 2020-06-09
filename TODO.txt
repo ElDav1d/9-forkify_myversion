@@ -1,0 +1,20 @@
+MINE
+1- Remove scroll at ingredients list
+2- Decouple items from list models (ingrededients. likes...)
+3- Likes grouped by Search?
+4- Ingredient Shopping list ammount when 0?
+    - ingredient from recipe's list?
+    - alert?
+5- Split controllers
+6- Clean markup's comments
+7- Pizza DIP problem with likes.
+8- FIX outer url'sç
+9- Improve ingredient paragraph (cookie monster cupcakes)
+
+SUGGESTED
+1- Implement button to delete all shopping list items
+2- Implement functionality to manually add itemos to shoppping list
+3- Save shopping list data in local storage
+4- Improve the ingredient parsing algorithm
+5- Come up with an algorithm for calculating the amount of servings
+6- Improve error handling
