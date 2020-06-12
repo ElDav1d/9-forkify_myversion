@@ -1,5 +1,4 @@
 import Recipe from './models/Recipe';
-import List from './models/List';
 import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
@@ -7,6 +6,7 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 import { controlSearch } from './controllers/search';
+import { controlList } from './controllers/list';
 import { controlLikes } from './controllers/likes';
 
 /** GLOBAL STATE OF THE APP
@@ -73,20 +73,6 @@ const controlRecipe = async () => {
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
-/**
- * LIST CONTROLLER
-*/
-const controlList = () => {
-    // Create a new list IF there is none yet
-    if (!state.list) state.list = new List();
-
-    // Add each ingredient to the list
-    state.recipe.ingredients.forEach(element => {
-        const item = state.list.addItem(element.count, element.unit, element.ingredient);
-        listView.renderItem(item);
-    });
-}
-
 // Handle delete and update list item events
 
 const removeListItem = (id) => {
@@ -141,7 +127,7 @@ elements.recipe.addEventListener('click', event => {
         recipeView.updateServingsIngredients(state.recipe);
     } else if (event.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
         // Add ingredients to list
-        controlList();
+        controlList(state);
     } else if (event.target.matches('.recipe__love, .recipe__love *')) {
         // Like controller
         controlLikes(state);
