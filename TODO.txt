@@ -7,9 +7,10 @@ MINE
     - alert?
 5- Split controllers
 // 6- Clean markup's comments
-7- Pizza DIP problem with likes.
-8- FIX outer url'sç
+// 7- Pizza DIP problem with likes => No bug, two recipes with same name!
+8- FIX outer url's
 9- Improve ingredient paragraph (cookie monster cupcakes)
+10- Merge ingredients at list 
 
 SUGGESTED
 1- Implement button to delete all shopping list items
