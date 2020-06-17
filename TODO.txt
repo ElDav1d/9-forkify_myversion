@@ -8,7 +8,7 @@ MINE
 5- Split controllers
 // 6- Clean markup's comments
 // 7- Pizza DIP problem with likes => No bug, two recipes with same name!
-8- FIX outer url's
+// 8- FIX outer url's
 9- Improve ingredient paragraph (cookie monster cupcakes)
 10- Merge ingredients at list 
 
