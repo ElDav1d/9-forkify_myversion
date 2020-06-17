@@ -74,6 +74,9 @@ body {
     height: 1.5rem;
     width: 1.5rem;
     fill: currentColor; }
+  .btn-small.btn-block {
+    display: block;
+  }
 
 .btn-inline {
   color: #F59A83;
@@ -441,6 +444,7 @@ body {
   display: flex;
   flex-direction: column; }
   .shopping__list {
+    margin-bottom: 3rem;
     list-style: none; }
   .shopping__item {
     display: flex;
@@ -488,3 +492,11 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+  .shopping__clearall {
+    margin-bottom: 3rem; }
+  .shopping__clearall span {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .shopping__clearall-icon {
+      margin-right: 1rem; }

@@ -1,5 +1,5 @@
 import List from '../models/List';
-import { renderItem } from '../views/listView'
+import * as listView from '../views/listView'
 
 export const controlList = state => {
     // Create a new list IF there is none yet
@@ -8,6 +8,9 @@ export const controlList = state => {
     // Add each ingredient to the list
     state.recipe.ingredients.forEach(element => {
         const item = state.list.addItem(element.count, element.unit, element.ingredient);
-        renderItem(item);
+        listView.renderItem(item);
     });
+
+    // Add clear list button
+    listView.renderClearButton();
 }

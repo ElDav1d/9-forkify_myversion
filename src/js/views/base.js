@@ -11,7 +11,8 @@ export const elements = {
 };
 
 export const elementStrings = {
-    loader: 'loader'
+    loader: 'loader',
+    clearlistbutton: 'shopping__clearall'
 }
 
 export const renderLoader = parent => {

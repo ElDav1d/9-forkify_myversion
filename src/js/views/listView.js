@@ -1,4 +1,4 @@
-import { elements } from './base';
+import { elements, elementStrings } from './base';
 
 export const renderItem = item => {
     const markup = `
@@ -22,3 +22,30 @@ export const deleteItem = id => {
     const item = document.querySelector(`[data-itemid="${id}"]`);
     if (item) item.parentElement.removeChild(item);
 };
+
+export const renderClearButton = () => {
+    const markup = `
+        <button class="btn-small btn-block shopping__clearall">
+            <span>
+                <svg class="shopping__clearall-icon">
+                    <use href="img/icons.svg#icon-circle-with-cross"></use>
+                </svg>
+                clear list
+            </span>
+        </button>
+    `;
+
+    const button = document.querySelector(`.${elementStrings.clearlistbutton}`);
+    if (!button) {
+        elements.shoppingList.insertAdjacentHTML('afterend', markup);
+    }
+}
+
+export const deleteClearButton = () => {
+    const button = document.querySelector(`.${elementStrings.clearlistbutton}`);
+    button.parentElement.removeChild(button);
+}
+
+export const clearItems = () => {
+    elements.shoppingList.innerHTML = '';
+}

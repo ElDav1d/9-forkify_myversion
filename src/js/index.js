@@ -4,7 +4,7 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import * as likesView from './views/likesView';
-import { elements, renderLoader, clearLoader } from './views/base';
+import { elements, elementStrings, renderLoader, clearLoader } from './views/base';
 import { controlSearch } from './controllers/search';
 import { controlList } from './controllers/list';
 import { controlLikes } from './controllers/likes';
@@ -84,6 +84,15 @@ const removeListItem = (id) => {
     // Handle the count update
 }
 
+const removeList = () => {
+    // Delete from state
+    delete state.list;
+
+    // Delete from UI
+    listView.clearItems();
+    listView.deleteClearButton();
+}
+
 elements.shoppingList.addEventListener('click', event => {
     const id = event.target.closest('.shopping__item').dataset.itemid;
 
@@ -97,6 +106,12 @@ elements.shoppingList.addEventListener('click', event => {
         } else {
             removeListItem(id);
         }
+    }
+});
+
+window.addEventListener('click', event => {
+    if (event.target.matches(`.${elementStrings.clearlistbutton}, .${elementStrings.clearlistbutton} *`)) {
+        removeList();
     }
 });
 

@@ -13,7 +13,7 @@ MINE
 10- Merge ingredients at list 
 
 SUGGESTED
-1- Implement button to delete all shopping list items
+// 1- Implement button to delete all shopping list items
 2- Implement functionality to manually add itemos to shoppping list
 3- Save shopping list data in local storage
 4- Improve the ingredient parsing algorithm
