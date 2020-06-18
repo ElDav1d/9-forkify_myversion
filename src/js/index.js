@@ -1,5 +1,6 @@
 import Recipe from './models/Recipe';
 import Likes from './models/Likes';
+import List from './models/List';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
@@ -86,7 +87,7 @@ const removeListItem = (id) => {
 
 const removeList = () => {
     // Delete from state
-    delete state.list;
+    state.list.deleteList();
 
     // Delete from UI
     listView.clearItems();
@@ -115,18 +116,28 @@ window.addEventListener('click', event => {
     }
 });
 
-// Restore liked recipes on page load
+// Restore liked recipes and shopping list on page load
 window.addEventListener('load', () => {
     state.likes = new Likes();
+    state.list = new List();
 
     // Restore likes
     state.likes.readStorage();
+
+    // Restore likes
+    state.list.readStorage();
 
     // Toggle like menu button
     likesView.toggleLikeMenu(state.likes.getLikesNumber());
 
     // Render the existing likes
     state.likes.likes.forEach(like => likesView.renderLike(like));
+
+    // Render the existing list
+    if (state.list.list.length > 0) {
+        state.list.list.forEach(item => listView.renderItem(item));
+        listView.renderClearButton();
+    };
 });
 
 // Handling recipe button clicks
