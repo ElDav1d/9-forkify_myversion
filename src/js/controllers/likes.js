@@ -2,14 +2,14 @@ import Likes from '../models/Likes';
 import * as likesView from '../views/likesView';
 
 export const controlLikes = state => {
-    if (!state.likes) state.likes = new Likes();
+    if (!state.likesObject) state.likesObject = new Likes();
     const currentID = state.recipe.id;
 
-    if (!state.likes.isLiked(currentID)) {
+    if (!state.likesObject.isLiked(currentID)) {
         // User has NOT yet LIKED recipe
 
         // Add like to the state
-        const newLike = state.likes.addLike(
+        const newLike = state.likesObject.addLike(
             currentID,
             state.recipe.title,
             state.recipe.author,
@@ -26,7 +26,7 @@ export const controlLikes = state => {
         // User LIKED recipe
 
         // Remove like to the state
-        state.likes.deleteLike(currentID);
+        state.likesObject.deleteLike(currentID);
 
         // Toggle the like button
         likesView.toggleLikeButton(false);
@@ -34,5 +34,5 @@ export const controlLikes = state => {
         // Remove like to UI list
         likesView.deleteLike(currentID);
     }
-    likesView.toggleLikeMenu(state.likes.getLikesNumber());
+    likesView.toggleLikeMenu(state.likesObject.getLikesNumber());
 };

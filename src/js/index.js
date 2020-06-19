@@ -62,7 +62,7 @@ const controlRecipe = async () => {
             clearLoader();
             recipeView.renderRecipe(
                 state.recipe,
-                state.likes.isLiked(id)
+                state.likesObject.isLiked(id)
             );
 
         } catch (error) {
@@ -78,7 +78,7 @@ const controlRecipe = async () => {
 
 const removeListItem = (id) => {
     // Delete from state
-    state.list.deleteItem(id);
+    state.listObject.deleteItem(id);
 
     // Delete from UI
     listView.deleteItem(id);
@@ -87,7 +87,7 @@ const removeListItem = (id) => {
 
 const removeList = () => {
     // Delete from state
-    state.list.deleteList();
+    state.listObject.deleteList();
 
     // Delete from UI
     listView.clearItems();
@@ -103,7 +103,7 @@ elements.shoppingList.addEventListener('click', event => {
     } else if (event.target.matches('.shopping__count-value')) {
         const value = parseFloat(event.target.value, 10);
         if (value > 0) {
-            state.list.updateCount(id, value);
+            state.listObject.updateCount(id, value);
         } else {
             removeListItem(id);
         }
@@ -118,24 +118,24 @@ window.addEventListener('click', event => {
 
 // Restore liked recipes and shopping list on page load
 window.addEventListener('load', () => {
-    state.likes = new Likes();
-    state.list = new List();
+    state.likesObject = new Likes();
+    state.listObject = new List();
 
     // Restore likes
-    state.likes.readStorage();
+    state.likesObject.readStorage();
 
     // Restore likes
-    state.list.readStorage();
+    state.listObject.readStorage();
 
     // Toggle like menu button
-    likesView.toggleLikeMenu(state.likes.getLikesNumber());
+    likesView.toggleLikeMenu(state.likesObject.getLikesNumber());
 
     // Render the existing likes
-    state.likes.likes.forEach(like => likesView.renderLike(like));
+    state.likesObject.likeItems.forEach(item => likesView.renderLike(item));
 
     // Render the existing list
-    if (state.list.list.length > 0) {
-        state.list.list.forEach(item => listView.renderItem(item));
+    if (state.listObject.listItems.length > 0) {
+        state.listObject.listItems.forEach(item => listView.renderItem(item));
         listView.renderClearButton();
     };
 });
