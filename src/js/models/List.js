@@ -6,23 +6,40 @@ export default class List {
     }
 
     addItem(count, unit, ingredient) {
-        const item = {
-            id: uniqid(),
-            count, //In ES6 is the same as count: count
-            unit,
-            ingredient
+        const isSameUnitIngredient = element => element.unit === unit && element.ingredient === ingredient
+        const checkIndex = this.listItems.findIndex(isSameUnitIngredient);
+
+        let item
+
+        if (checkIndex !== -1) {
+            // If there's already an item in the list
+            // with same ingredient and units
+            // only the count must be updated
+            this.listItems[checkIndex].count += count;
+            item = this.listItems[checkIndex];
+            item.isCountUpdated = true;
+        } else {
+            // If not, a new item is created
+            // and pushed to the list 
+            item = {
+                id: uniqid(),
+                count, //In ES6 is the same as count: count
+                countStep: count,
+                unit,
+                ingredient,
+                isCountUpdated: false
+            }
+            this.listItems.push(item);
         }
-        this.listItems.push(item);
 
         // Persist data in localStorage
         this.persistData();
-
         return item
     }
 
     deleteItem(id) {
-        const index = this.listItems.findIndex(element => element.id === id);
-        this.listItems.splice(index, 1);
+        const checkIndex = this.listItems.findIndex(element => element.id === id);
+        this.listItems.splice(checkIndex, 1);
 
         // Persist data in localStorage
         this.persistData();
