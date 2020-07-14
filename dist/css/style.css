@@ -123,7 +123,9 @@ body {
     transform: translateY(0); }
   .btn-tiny:not(:last-child) {
     margin-right: .3rem; }
-
+.btn-add {
+  flex: 1;
+}
 .heading-2 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -425,7 +427,9 @@ body {
     color: #968B87; }
   .recipe__by {
     font-weight: 700; }
-
+.recipe__content {
+  flex: 10;
+}
 .shopping {
   padding: 3rem 4rem;
   display: flex;
