@@ -7,7 +7,7 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import { elements, elementStrings, renderLoader, clearLoader } from './views/base';
 import { controlSearch } from './controllers/search';
-import { controlList } from './controllers/list';
+import { controlListAddList, controlListAddIngredient } from './controllers/list';
 import { controlLikes } from './controllers/likes';
 
 /** GLOBAL STATE OF THE APP
@@ -153,9 +153,11 @@ elements.recipe.addEventListener('click', event => {
         recipeView.updateServingsIngredients(state.recipe);
     } else if (event.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
         // Add ingredients to list
-        controlList(state);
+        controlListAddList(state);
     } else if (event.target.matches('.recipe__love, .recipe__love *')) {
         // Like controller
         controlLikes(state);
+    } else if (event.target.matches('.btn-add, .btn-add *')) {
+        controlListAddIngredient(event.target, state);
     }
 });
