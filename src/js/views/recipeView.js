@@ -114,8 +114,9 @@ export const updateServingsIngredients = recipe => {
     document.querySelector('.recipe__info-data--people').textContent = recipe.servings;
 
     // Update ingredients
-    const countElements = Array.from(document.querySelectorAll('.recipe__count'));
+    const countElements = Array.from(document.querySelectorAll('.recipe__content'));
     countElements.forEach((element, i) => {
-        element.textContent = formatCount(recipe.ingredients[i].count);
+        const elementContent = element.getElementsByTagName('span');
+        elementContent[0].textContent = formatCount(recipe.ingredients[i].count);
     });
 };
