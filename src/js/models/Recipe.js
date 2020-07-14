@@ -1,4 +1,5 @@
 import axios from 'axios';
+import uniqid from 'uniqid';
 
 export default class Recipe {
     constructor(id) {
@@ -65,6 +66,7 @@ export default class Recipe {
                 }
 
                 objectIngredient = {
+                    id: uniqid(),
                     count, // same as count: count
                     unit: arrayIngredient[unitIndex],
                     ingredient: arrayIngredient.slice(unitIndex + 1).join(' ')
@@ -73,6 +75,7 @@ export default class Recipe {
             } else if (parseInt(arrayIngredient[0], 10)) {
                 // There's NO unit, but 1st element is a "string-number": parsed into number, then coerces to true
                 objectIngredient = {
+                    id: uniqid(),
                     count: parseInt(arrayIngredient[0], 10),
                     unit: '',
                     ingredient: arrayIngredient.slice(1).join(' ') // all the array BUT the first element, then string
@@ -80,6 +83,7 @@ export default class Recipe {
             } else if (unitIndex === -1) {
                 // There's NO unit and NO "string-number" in 1st position
                 objectIngredient = {
+                    id: uniqid(),
                     count: 1,
                     unit: '',
                     ingredient //same as ingredient: ingredient
