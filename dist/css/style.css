@@ -411,19 +411,6 @@ body {
     margin-bottom: 3rem; }
   .recipe__item {
     display: flex; }
-  .recipe__icon {
-    height: 1.8rem;
-    width: 1.8rem;
-    fill: #F59A83;
-    border: 1px solid #F59A83;
-    border-radius: 50%;
-    padding: 2px;
-    margin-right: 1rem;
-    flex: 0 0 auto;
-    margin-top: .1rem; }
-  .recipe__count {
-    margin-right: .5rem;
-    flex: 0 0 auto; }
   .recipe__directions {
     padding: 4rem;
     padding-bottom: 5rem;
