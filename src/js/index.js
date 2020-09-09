@@ -9,6 +9,7 @@ import { elements, elementStrings, renderLoader, clearLoader } from './views/bas
 import { controlSearch } from './controllers/search';
 import { controlListAddList, controlListAddIngredient } from './controllers/list';
 import { controlLikes } from './controllers/likes';
+import { controlRecipe } from './controllers/recipe';
 
 /** GLOBAL STATE OF THE APP
  * - Search object
@@ -32,47 +33,16 @@ elements.searchResultPages.addEventListener('click', event => {
     }
 });
 
-/**
- * RECIPE CONTROLLER
-*/
-const controlRecipe = async () => {
-    // Get ID from URL
-    const id = window.location.hash.replace('#', '');
+// Obtain recipe from url
 
-    if (id) {
-        // Prepare UI for changes
-        recipeView.clearRecipe();
-        renderLoader(elements.recipe);
+// ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe(state)));
+['load'].forEach(event => window.addEventListener(event, controlRecipe(state)));
 
-        // Highlight selected search item
-        if (state.search) searchView.highlightSelected(id);
+window.addEventListener('hashchange', event => {
+    console.log('hash changed');
+    controlRecipe(state);
+});
 
-        // Create new recipe
-        state.recipe = new Recipe(id);
-
-        try {
-            // Get recipe data and parse ingredients
-            await state.recipe.getRecipe();
-            state.recipe.parseIngredients();
-            // Calculate servings and time
-            state.recipe.calcTime();
-            state.recipe.calcServings();
-
-            // Render recipe
-            clearLoader();
-            recipeView.renderRecipe(
-                state.recipe,
-                state.likesObject.isLiked(id)
-            );
-
-        } catch (error) {
-            console.log(error);
-            alert('Error processing recipe!');
-        }
-    }
-}
-
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 // Handle delete and update list item events
 
