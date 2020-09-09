@@ -1,4 +1,4 @@
-# 6-budgety
+# 9-forkify_myversion
 New features added to Udemy's "The Complete JavaScript Course 2020: Build Real Projects!", Section 9: Modern JavaScript: Using ES6, NPM, Babel and Webpack
 
 The goal of this asisted app creation is applying the knowledge of previous lectures about ES-6, asynchronous programming and modern module workflow. And encouraging an MVC design pattern with separation of concerns.
